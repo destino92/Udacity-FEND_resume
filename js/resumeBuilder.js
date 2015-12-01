@@ -41,3 +41,23 @@ for (var skill in bio.skills){
 	$("#skills").append(formattedSkills);
 }
 
+//work section
+var work = {};
+
+work.employer = "QwickLink" ;
+work.title = "Co Founder, Web Developer" ;
+work.dates = "October 2015 - Future";
+work.location = "Nairobi, KE";
+work.description = "I am in charge of the developping the front end of the QwickLink social network. For now the project is still under work and i am comitted to it at part-time.I do everything client-side related and collaborate with our back end Developer to implement it."
+var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.employer);
+var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.title);
+var formattedWorkDates = HTMLworkDates.replace("%data%", work.dates);
+var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.location);
+var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.description);
+
+$("#workExperience").append(HTMLworkStart);
+$(".work-entry").append(formattedWorkEmployer);
+$(".work-entry").append(formattedWorkTitle);
+$(".work-entry").append(formattedWorkDates);
+$(".work-entry").append(formattedWorkLocation);
+$(".work-entry").append(formattedWorkDescription);
