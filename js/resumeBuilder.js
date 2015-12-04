@@ -2,10 +2,11 @@
 This is empty on purpose! Your code to build the resume will go here.
  */
 
+//bio section
 var bio = {
 		"name": "Destino Dello",
 		"role": "Web Developper",
-		"contact": {
+		"contacts": {
 			"mobile": "+254708797070",
 			"email": "destinodello@gmail.com",
 			"github": "destino92",
@@ -18,10 +19,10 @@ var bio = {
 
 var formattedName = HTMLheaderName.replace("%data%",bio["name"]);
 var formattedRole = HTMLheaderRole.replace("%data%",bio["role"]);
-var formattedMobile = HTMLmobile.replace("%data%",bio.contact.mobile);
-var formattedEmail = HTMLemail.replace("%data%",bio.contact.email);
-var formattedGithub = HTMLgithub.replace("%data%",bio.contact.github);
-var formattedLocation = HTMLlocation.replace("%data%",bio.contact.location);
+var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
+var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
 var formattedBioPic = HTMLbioPic.replace("%data%",bio.bioPic);
 var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 
@@ -42,24 +43,39 @@ for (var skill in bio.skills){
 }
 
 //work section
-var work = {};
+var work = {
+	"jobs" : [
+	  {
+		"employer" : "QwickLink",
+		"title" : "Co Founder, Web Developer",
+		"location" : "Nairobi, KE",
+		"dates" : "October 2015 - Future",
+		"description" : "I am in charge of the developping the front end of the QwickLink social network. For now the project is still under work and i am comitted to it at part-time.I do everything client-side related and collaborate with our back end Developer to implement it."
+	  }
+	]
+};
 
-work.employer = "QwickLink" ;
-work.title = "Co Founder, Web Developer" ;
-work.dates = "October 2015 - Future";
-work.location = "Nairobi, KE";
-work.description = "I am in charge of the developping the front end of the QwickLink social network. For now the project is still under work and i am comitted to it at part-time.I do everything client-side related and collaborate with our back end Developer to implement it."
-var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.employer);
-var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.title);
-var formattedWorkDates = HTMLworkDates.replace("%data%", work.dates);
-var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.location);
-var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.description);
+var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[0].employer);
+var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[0].title);
+var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[0].dates);
+var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[0].location);
+var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[0].description);
 
 $("#workExperience").append(HTMLworkStart);
 $(".work-entry").append(formattedWorkEmployer + formattedWorkTitle);
 $(".work-entry").append(formattedWorkDates);
 $(".work-entry").append(formattedWorkLocation);
 $(".work-entry").append(formattedWorkDescription);
+
+//project section
+var projects = {
+	project: [
+		"title" : "",
+		"dstes" : "",
+		"description": "",
+		"images": []
+	]
+}
 
 //education section
 var education = {
@@ -74,19 +90,19 @@ var education = {
 	],
 	"onlineCourses": [
 		{
-			"Title" : "JavaScript Programming: Learn by Making a Mobile Game",
-			"School" : "Udemy",
-			"Dates" : 2015,
-			"URL" : "https://www.udemy.com/certificate/UC-BHKYRZV2/"
+			"title" : "JavaScript Programming: Learn by Making a Mobile Game",
+			"school" : "Udemy",
+			"dates" : 2015,
+			"url" : "https://www.udemy.com/certificate/UC-BHKYRZV2/"
 		}
 	]
 };
 
-var formattedschoolName = HTMLschoolName.replace("%data%", education.schoolName);
-var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schoolDegree);
-var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schoolDates);
-var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schoolLocation);
-var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schoolMajor); 
+var formattedschoolName = HTMLschoolName.replace("%data%", education.schools[0].name);
+var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[0].degree);
+var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[0].dates);
+var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[0].location);
+var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[0].major); 
 
 $("#education").append(HTMLschoolStart);
 $(".education-entry").append(formattedschoolName + formattedschoolDegree);
@@ -95,15 +111,10 @@ $(".education-entry").append(formattedschoolDates);
 $(".education-entry").append(formattedschoolLocation);
 $(".education-entry").append(formattedschoolMajor);
 
-education.onlineTitle = "JavaScript Programming: Learn by Making a Mobile Game";
-education.onlineSchool = "Udemy";
-education.onlineDates = "2015";
-education.onlineURL = "https://www.udemy.com/certificate/UC-BHKYRZV2/";
-
-var formattedonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineTitle);
-var formattedonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineSchool);
-var formattedonlineDates = HTMLonlineDates.replace("%data%", education.onlineDates);
-var formattedonlineURL = HTMLonlineURL.replace("%data%", education.onlineURL);
+var formattedonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[0].title);
+var formattedonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[0].school);
+var formattedonlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[0].dates);
+var formattedonlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[0].url);
 
 $(".education-entry").append(HTMLonlineClasses);
 $(".education-entry").append(formattedonlineTitle + formattedonlineSchool);
