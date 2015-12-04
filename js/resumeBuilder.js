@@ -35,12 +35,14 @@ $("#topContacts").append(formattedLocation);
 $("#header").append(formattedBioPic);
 $("#header").append(formattedWelcomeMessage);
 
+if(bio.skills.length != 0){
 $("#header").append(HTMLskillsStart);
 
-for (var skill in bio.skills){
-	var formattedSkills = HTMLskills.replace("%data%",bio.skills[skill]);
-	$("#skills").append(formattedSkills);
-}
+	for (var skill in bio.skills){
+		var formattedSkills = HTMLskills.replace("%data%",bio.skills[skill]);
+		$("#skills").append(formattedSkills);
+	}
+};
 
 //work section
 var work = {
@@ -69,11 +71,13 @@ $(".work-entry").append(formattedWorkDescription);
 
 //project section
 var projects = {
-	project: [
-		"title" : "",
-		"dstes" : "",
-		"description": "",
-		"images": []
+	"project" : [
+		{
+			"title" : "",
+			"dstes" : "",
+			"description": "",
+			"images": []
+		}
 	]
 }
 
