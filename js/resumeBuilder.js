@@ -79,13 +79,37 @@ displayWork();
 var projects = {
 	"project" : [
 		{
-			"title" : "a simple js game",
-			"dates" : "",
-			"description": "",
-			"images": []
+			"title" : "SYDNEY LIRA website",
+			"dates" : "2015",
+			"description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"images" : ['images/17.jpg']
 		}
 	]
 }
+
+projects.display = function(){
+	for(i in projects.project){
+		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.project[i].title);
+		var formattedDates = HTMLprojectDates.replace("%data%", projects.project[i].dates);
+		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.project[i].description);
+
+		$("#projects").append(HTMLprojectStart);
+		$(".project-entry:last").append(formattedTitle);
+		$(".project-entry:last").append(formattedDates);
+		$(".project-entry:last").append(formattedDescription);
+
+		if(projects.project[i].images.length != 0){
+
+			projects.project[i].images.forEach(function(element, index, array){
+				console.log(element);
+				var formattedImage = HTMLprojectImage.replace("%data%",element);
+				$(".project-entry:last").append(formattedImage);
+			})
+		};
+	}
+}
+
+projects.display();
 
 //education section
 var education = {
@@ -138,3 +162,6 @@ $(document).click(function(loc) {
 
 	logClicks(x,y);
 });
+
+//add a map
+$("#mapDiv").append(googleMap);
