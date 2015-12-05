@@ -57,24 +57,30 @@ var work = {
 	]
 };
 
-var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[0].employer);
-var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[0].title);
-var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[0].dates);
-var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[0].location);
-var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[0].description);
+function displayWork() {
+	for(job in work.jobs) {
+		var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
-$("#workExperience").append(HTMLworkStart);
-$(".work-entry").append(formattedWorkEmployer + formattedWorkTitle);
-$(".work-entry").append(formattedWorkDates);
-$(".work-entry").append(formattedWorkLocation);
-$(".work-entry").append(formattedWorkDescription);
+		$("#workExperience").append(HTMLworkStart);
+		$(".work-entry:last").append(formattedWorkEmployer + formattedWorkTitle);
+		$(".work-entry:last").append(formattedWorkDates);
+		$(".work-entry:last").append(formattedWorkLocation);
+		$(".work-entry:last").append(formattedWorkDescription);
+	}
+}
+
+displayWork();
 
 //project section
 var projects = {
 	"project" : [
 		{
-			"title" : "",
-			"dstes" : "",
+			"title" : "a simple js game",
+			"dates" : "",
 			"description": "",
 			"images": []
 		}
@@ -124,3 +130,11 @@ $(".education-entry").append(HTMLonlineClasses);
 $(".education-entry").append(formattedonlineTitle + formattedonlineSchool);
 $(".education-entry").append(formattedonlineDates);
 $(".education-entry").append(formattedonlineURL);
+
+//collecting click locations
+$(document).click(function(loc) {
+	var x = loc.pageX;
+	var y = loc.pageY;
+
+	logClicks(x,y);
+});
